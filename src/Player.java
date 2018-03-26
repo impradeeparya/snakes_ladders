@@ -1,12 +1,21 @@
+import java.util.function.Consumer;
+
 public class Player {
   private int x;
   private int y;
+  private Direction direction;
+
+  public Player(int x, int y, Direction direction) {
+    this.x = x;
+    this.y = y;
+    this.direction = direction;
+  }
 
   public int getX() {
     return x;
   }
 
-  public Player setX(int x) {
+  private Player setX(int x) {
     this.x = x;
     return this;
   }
@@ -15,10 +24,14 @@ public class Player {
     return y;
   }
 
-  public Player setY(int y) {
+  private Player setY(int y) {
     this.y = y;
     return this;
   }
+
+  public Consumer<Board> move = (board) -> {
+    Node[][] matrix = board.matrix.get();
+  };
 
   @Override
   public String toString() {

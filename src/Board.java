@@ -1,15 +1,16 @@
 import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
 public class Board {
 
-  private Node[][] matrix;
+  private Node[][] board;
 
   public QuadFunction<Integer, Integer, Integer, Integer, Board> snakesLadders =
       (x1, y1, x2, y2) -> {
-        if (matrix != null) {
+        if (board != null) {
 
-          if (x1 <= matrix.length && y1 <= matrix[0].length) {
-            Node node = matrix[x1][y1];
+          if (x1 <= board.length && y1 <= board[0].length) {
+            Node node = board[x1][y1];
             node.setHasJump(true).setX(x2).setY(y2);
           }
         }
@@ -18,14 +19,16 @@ public class Board {
       };
 
   public Board(Node[][] matrix) {
-    this.matrix = matrix;
+    this.board = matrix;
   }
 
   public BiFunction<Integer, Integer, Node> value = (x, y) -> {
-    if (x <= matrix.length && y <= matrix[0].length) {
-      return this.matrix[x][y];
+    if (x <= board.length && y <= board[0].length) {
+      return this.board[x][y];
     } else {
       return null;
     }
   };
+
+  public Supplier<Node[][]> matrix = () -> board;
 }

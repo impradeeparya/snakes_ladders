@@ -9,8 +9,8 @@ public class GameRunner {
 
     board.snakesLadders.apply(9, 1, 7, 2).snakesLadders.apply(2, 7, 8, 3);
 
-    Player player1 = new Player().setX(0).setY(0);
-    Player player2 = new Player().setX(0).setY(0);
+    Player player1 = new Player(9, 0, Direction.RIGHT);
+    Player player2 = new Player(9, 0, Direction.RIGHT);
 
     Scanner scanner = new Scanner(System.in);
 

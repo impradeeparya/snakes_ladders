@@ -9,13 +9,19 @@ public class BoardBuilder {
 
     Node[][] matrix = new Node[r][c];
 
-    int value = 1;
-    for (int row = 0; row < r; row++)
-      for (int col = 0; col < c; col++) {
+    int value = 100;
+    int col = 0;
+    boolean isRight = true;
+    for (int row = 0; row < r; row++) {
+      while (isRight ? (col < c) : (col >= 0)) {
         Node node = new Node();
-        node.setValue(value++);
+        node.setValue(value--);
         matrix[row][col] = node;
+        col = isRight ? ++col : --col;
       }
+      isRight = !isRight;
+      col = (col == c) ? --col : ++col;
+    }
 
 
     return new Board(matrix);
