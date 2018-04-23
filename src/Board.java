@@ -1,4 +1,5 @@
 import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class Board {
@@ -31,4 +32,7 @@ public class Board {
   };
 
   public Supplier<Node[][]> matrix = () -> board;
+
+  public Function<Player, Boolean> isGameOver =
+      (player) -> player.getX() == 0 && player.getY() == 0;
 }
